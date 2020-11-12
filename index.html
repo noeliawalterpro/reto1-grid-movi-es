@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movi.es</title>
+    <link rel="stylesheet" href="font-iconmoon.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size:16px;
+        }
+
+        body {
+            font-size: 1rem;
+        }
+
+        figure {
+            margin: 0;
+        }
+        .grid-container {
+    max-width: 1200px;
+    margin: auto;
+}
+        /*header*/
+        .header {
+    height: 80px;
+    display: grid;
+    grid-template-columns: 175px 1fr 200px;
+    grid-template-areas: "logo buscar perfil";
+    justify-content: center;
+    position: relative;
+    z-index: 100;
+   
+}
+        .header .logo {
+            grid-area: logo;
+        }
+
+        .header .logo img {
+
+            max-height: 60px;
+            width: auto;
+            display: block;
+        }
+
+
+        .header .buscar {
+            grid-area: buscar;
+            /* text-align: center; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .buscar input {
+            /* height: 20px; */
+            border-radius: 5px;
+            min-width: 300px;
+font-size: 1rem;
+            display: inline-block;
+            vertical-align: center;
+            overflow-wrap: break-word;
+        }
+
+        .perfil {
+            grid-area: perfil;
+            height: 60px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .perfil-title {
+
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .perfil-image img {
+            height: 60px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .perfil-more {
+           
+
+            display: inline-block;
+            vertical-align: middle;
+            transform: rotate(90deg);
+        }
+        .icon-play3 {
+            font-size:1rem;
+        }
+        /*menu list*/
+        .menu-list {
+            grid-area: menu-list;
+            background-color: #ff565d;
+            display: grid;
+            grid-template-rows: 1fr 1fr 1fr 6fr 1fr;
+            grid-template-areas: "home"
+                "trending"
+                "likes"
+                "."
+                "ajustes";
+
+            justify-content: center;
+            align-content: center;
+        }
+
+        .menu-list .item {
+            color: white;
+            background-color: #ff565d;
+            padding: 15px;
+        }
+
+        .menu-list .item .home {
+            grid-area: home;
+        }
+
+        .menu-list .item .trending {
+            grid-area: trending;
+        }
+
+        .menu-list .item .likes {
+            grid-area: likes;
+        }
+
+        .menu-list .item .ajustes {
+            grid-area: ajustes;
+        }
+
+        .menu-list .item p {
+            margin: 0px;
+            text-align: center;
+        }
+
+        .menu-list [class^="icon-"],
+        .menu-list  [class*=" icon-"] {
+            font-size: 50px;
+            height: 1.1em;
+            line-height: 1.2em;
+
+        }
+        /*main*/
+        .main-container{
+            display: grid;
+            grid-template-columns:100px 5fr;
+            grid-template-areas:    "menu-list post-list1"
+                                    "menu-list post-list2"
+                                    "menu-list post-list3";
+        }
+        /*post*/
+        .post-list.post-list1{
+            grid-area: post-list1;
+        }
+        .post-list.post-list2{
+            grid-area: post-list2;
+        }
+        .post-list.post-list3{
+            grid-area: post-list3;
+        }
+        .post-list {
+            background-color: #ffffff;
+            padding: 20px;
+            /* grid-area: post-list; */
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr [final];
+          grid-row: 1fr 3fr;
+            justify-content: center;
+            grid-gap:30px;
+            align-content: center;
+        }
+
+        .post-list .title {
+            grid-area: title;
+            grid-column-start: 1;
+            grid-column-end: final;
+            grid-row: 1 /2;
+
+        }
+
+        .post-list .post {
+            justify-self: center;
+            height: auto;
+            width:100%;
+            position: relative;
+            margin: 5px;
+        }
+
+        .post .post-image {
+            height: 100%;
+
+        }
+
+        .post .post-image img {
+            height: 100%;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .post-details {
+            height: 40%;
+            position: absolute;
+
+            padding: 5px 15px;
+            width: 100%;
+            display: block;
+            bottom: 0;
+            background: rgba(255, 0, 0, 0.4);
+            color: white;
+        }
+
+        .post-details .post-title {
+            font-size: 1.6rem;
+            font-weight: bold;
+            line-height: 1em;
+            margin: 0;
+            width: 100%;
+        }
+
+        .post-details .post-description {
+
+            width: 100%;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="grid-container">
+        <header class="item header">
+            <figure class="item logo"><img src="images/logo-movi-es.png" alt=""></figure>
+            <div class="item buscar">
+                <input type="text" placeholder="Busca tu peli, actpr, actriz o director favorito">
+            </div>
+            <div>
+                <div class="item perfil">
+                    <span class="perfil-title">Bambi Rodrigues</span>
+                    <figure class="perfil-image"><img src="images/perfil-image.png" alt=""></figure>
+
+                    <span class="perfil-more icon-play3"></span>
+                </div>
+            </div>
+        </header>
+        <main class="item main-container">
+            <aside class="item menu-list">
+                <div class="item home">
+                    <p class="icon-home3"></p>
+                    <p>Home</p>
+                </div>
+            
+                <div class="item trending">
+                    <p class="icon-fire"></p>
+                    <p>Trending</p>
+                </div>
+                
+                <div class="item likes ">
+                    <p class="icon-heart"></p>
+                    <p>Likes</p>
+                </div>
+                <div class="item">
+
+                </div>
+                <div class="item ajustes ">
+                    <p class="icon-cog"></p>
+                    <p>Ajustes</p>
+                </div>
+            </aside>
+            
+             <section class="item post-list post-list1">
+                <h2 class="item title">Ahora en Cines</h2>
+                <article class="item  post">
+                    <figure class="item post-image">
+                        <img src="images/myke-simon-atsUqIm3wxo-unsplash.jpg" alt="">
+
+                    </figure>
+                    <div class="item post-details">
+                        <h3 class=" post-title">Movie Title</h3>
+                        <div class=" post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum fuga
+                            alias nisi dolorem,</div>
+                    </div>
+                </article>
+                <article class="item post">
+                    <figure class="item post-image">
+                        <img src="images/myke-simon-atsUqIm3wxo-unsplash.jpg" alt="">
+
+                    </figure>
+                    <div class="item post-details">
+                        <h3 class=" post-title">Movie Title</h3>
+                        <div class=" post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum fuga
+                            alias nisi dolorem,</div>
+                    </div>
+                </article>
+                <article class="item post">
+                    <figure class="item post-image">
+                        <img src="images/myke-simon-atsUqIm3wxo-unsplash.jpg" alt="">
+
+                    </figure>
+                    <div class="item post-details">
+                        <h3 class=" post-title">Movie Title</h3>
+                        <div class=" post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum fuga
+                            alias nisi dolorem,</div>
+                    </div>
+                </article>
+            </section>
+            <section class="item post-list post-list2">
+                <h2 class="item title">Ahora en Cines</h2>
+                <article class="item post">
+                    <figure class="item post-image">
+                        <img src="images/myke-simon-atsUqIm3wxo-unsplash.jpg" alt="">
+
+                    </figure>
+                    <div class="item post-details">
+                        <h3 class=" post-title">Movie Title</h3>
+                        <div class=" post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum fuga
+                            alias nisi dolorem,</div>
+                    </div>
+                </article>
+                <article class="item post">
+                    <figure class="item post-image">
+                        <img src="images/myke-simon-atsUqIm3wxo-unsplash.jpg" alt="">
+
+                    </figure>
+                    <div class="item post-details">
+                        <h3 class=" post-title">Movie Title</h3>
+                        <div class=" post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum fuga
+                            alias nisi dolorem,</div>
+                    </div>
+                </article>
+                <article class="item post">
+                    <figure class="item post-image">
+                        <img src="images/myke-simon-atsUqIm3wxo-unsplash.jpg" alt="">
+
+                    </figure>
+                    <div class="item post-details">
+                        <h3 class=" post-title">Movie Title</h3>
+                        <div class=" post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum fuga
+                            alias nisi dolorem,</div>
+                    </div>
+                </article>
+            </section>
+            <section class="item post-list post-list3">
+                <h2 class="item title">Ahora en Cines</h2>
+                <article class="item post">
+                    <figure class="item post-image">
+                        <img src="images/myke-simon-atsUqIm3wxo-unsplash.jpg" alt="">
+
+                    </figure>
+                    <div class="item post-details">
+                        <h3 class=" post-title">Movie Title</h3>
+                        <div class=" post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum fuga
+                            alias nisi dolorem,</div>
+                    </div>
+                </article>
+                <article class="item post">
+                    <figure class="item post-image">
+                        <img src="images/myke-simon-atsUqIm3wxo-unsplash.jpg" alt="">
+
+                    </figure>
+                    <div class="item post-details">
+                        <h3 class=" post-title">Movie Title</h3>
+                        <div class=" post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum fuga
+                            alias nisi dolorem,</div>
+                    </div>
+                </article>
+                <article class="item post">
+                    <figure class="item post-image">
+                        <img src="images/myke-simon-atsUqIm3wxo-unsplash.jpg" alt="">
+
+                    </figure>
+                    <div class="item post-details">
+                        <h3 class=" post-title">Movie Title</h3>
+                        <div class=" post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum fuga
+                            alias nisi dolorem,</div>
+                    </div>
+                </article> 
+             </section>
+         </main> 
+    </div>
+</body>
+
+</html>
